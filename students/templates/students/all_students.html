@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Data</title>
+</head>
+<body>
+    <h1>All Students</h1>
+    <ul>
+        {% for x in students %}
+        <li style="list-style: none;"><a href="{% url 'dashboard' student.id %}">{{x.id}}. {{ x.firstname }} {{ x.lastname }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>In table format</h2>
+    <table border="1" >
+        <tr>
+            <th>Student ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+        
+        {% for i in students %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.firstname }}</td>
+            <td>{{ i.lastname }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

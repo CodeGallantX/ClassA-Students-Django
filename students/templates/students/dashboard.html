@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+</head>
+<body>
+    
+    <h1>Welcome {{student.lastname}} <strong>{{student.firstname}}</strong> !</h1>
+    <p>You have successfully enrolled into Neon Institute.</p>
+
+    <hr/>
+    <p>Phone number: {{ student.phone_number }}</p>
+    <p>You joined ClassA on: {{ student.date_joined }}</p>
+    <p>Back to <a href="/students">Students list</a></p>
+</body>
+</html>
