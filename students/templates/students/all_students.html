@@ -10,7 +10,7 @@
     <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">All Students</h1>
     <ul>
         {% for x in students %}
-        <li style="list-style: none;"><a href="dashboard/">{{x.id}}. {{ x.firstname }} {{ x.lastname }}</a></li>
+        <li style="list-style: none;"><a href="dashboard/{{x.id}}">{{ x.firstname }} {{ x.lastname }}</a></li>
         {% endfor %}
     </ul>
 
