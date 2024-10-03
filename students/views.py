@@ -10,7 +10,7 @@ def students(request):
   }
   return HttpResponse(template.render(context, request))
   
-def dashboard(request):
+def dashboard(request, id):
   student = Student.objects.get(id=id)
   template = loader.get_template('students/dashboard.html')
   context = {
