@@ -24,7 +24,4 @@ def main(request):
 
 def testing(request):
   template = loader.get_template('testing.html')
-  context = {
-    'greeting': 1,
-  }
   return HttpResponse(template.render())     
