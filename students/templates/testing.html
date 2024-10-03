@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    {% for x in fruits %}
-    <h1>{{x}}</h1>
-    {% endfor %}
-    <p>Check <code>views.py</code> for fruit variable</p>
+    
+    
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+    {% else %}
+    <h1>Goodbye</h1>
+    {% endif %}
+   
 </body>
 </html>
