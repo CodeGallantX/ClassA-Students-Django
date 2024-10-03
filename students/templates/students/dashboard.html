@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+{% extends "master.html" %}
 <html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
-</head>
+    {% block title %}
+    Student Dashboard
+    {% endblock %}
+
+
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    
+    {% block content %}
     <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: light;">Welcome {{student.lastname}} <strong>{{student.firstname}}</strong>!</h1>
     <p>You have successfully enrolled into Neon Institute.</p>
 
@@ -15,5 +18,6 @@
     <p><strong>Phone number:</strong> +{{ student.phone_number }}</p>
     <p><strong>You joined ClassA on:</strong> {{ student.date_joined }}</p>
     <p>Back to <a href="/students">Students list</a></p>
+    {% endblock %}
 </body>
 </html>
