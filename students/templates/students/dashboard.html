@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
 </head>
-<body>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
     
-    <h1>Welcome {{student.lastname}} <strong>{{student.firstname}}</strong> !</h1>
+    <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome {{student.lastname}} <strong>{{student.firstname}}</strong> !</h1>
     <p>You have successfully enrolled into Neon Institute.</p>
 
     <hr/>
+    <p>Email address: {{ student.email }}</p>
     <p>Phone number: {{ student.phone_number }}</p>
     <p>You joined ClassA on: {{ student.date_joined }}</p>
     <p>Back to <a href="/students">Students list</a></p>

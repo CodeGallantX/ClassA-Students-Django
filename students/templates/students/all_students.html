@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students Data</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat|Cabin">
 </head>
-<body>
-    <h1>All Students</h1>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">All Students</h1>
     <ul>
         {% for x in students %}
-        <li style="list-style: none;"><a href="{% url 'dashboard' student.id %}">{{x.id}}. {{ x.firstname }} {{ x.lastname }}</a></li>
+        <li style="list-style: none;"><a href="dashboard/">{{x.id}}. {{ x.firstname }} {{ x.lastname }}</a></li>
         {% endfor %}
     </ul>
 
-    <h2>In table format</h2>
-    <table border="1" >
-        <tr>
+    <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">In table format</h2>
+    <table border="2">
+        <tr style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
             <th>Student ID</th>
             <th>First name</th>
             <th>Last name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+
         </tr>
         
         {% for i in students %}
@@ -26,6 +30,8 @@
             <td>{{ i.id }}</td>
             <td>{{ i.firstname }}</td>
             <td>{{ i.lastname }}</td>
+            <td>{{ i.phone_number }}</td>
+            <td>{{ i.email }}</td>
         </tr>
         {% endfor %}
     </table>
