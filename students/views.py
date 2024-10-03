@@ -17,3 +17,14 @@ def dashboard(request, id):
     'student': student,
   }
   return HttpResponse(template.render(context, request))
+
+def main(request):
+  template = loader.get_template('students/index.html')
+  return HttpResponse(template.render())
+
+def testing(request):
+  template = loader.get_template('testing.html')
+  context  = {
+    'fruits': ['Apple', 'Banana', 'Orange'],
+  }
+  return HttpResponse(template.render(context, request))

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-{% extends "master.html" %}
+{% extends "students/master.html" %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students Data</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat|Cabin">
-</head>
-<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    
+    {% block title %}
+    Students Data
+    {% endblock %}
+
+    
+
+
 {% block content %}
+    <p><a href="/">HOME</a></p>
     <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">All Students</h1>
     <ul>
         {% for x in students %}
@@ -38,5 +40,5 @@
         {% endfor %}
     </table>
     {% endblock %}
-</body>
+
 </html>
