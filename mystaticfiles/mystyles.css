@@ -8,6 +8,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', serif;
+  text-align: center;
 }
 
 .topnav {
@@ -75,4 +76,18 @@ a:link, a:visited {
   padding: 6px 8px 6px 6px;
   color: rgb(0, 128, 55);
   font-size: 16px;
+}
+
+table {
+  text-align: center;
+}
+
+button {
+  background: linear-gradient(to right, #375BDC, #4D70EF); 
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-left: 20px;
+  font-family: Montserrat;
 }
