@@ -1,3 +1,6 @@
+/* This CSS file is for when `debug` is set to True in `settings.py`
+PS: NOT FOR PRODUCTION!!*/
+
 body {
     background-color: #f1f1f1;
     font-family: "Cabin", Tahoma;
