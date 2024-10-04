@@ -1,8 +1,21 @@
 body {
-    background-color: lightblue;
+    background-color: #f1f1f1;
     font-family: "Cabin", Tahoma;
 }
 
 h1, h2 {
   font-family:"Monsterrat", 'Trebuchet MS';
+}
+
+button {
+  background-color: rgb(51, 138, 238);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
 }
