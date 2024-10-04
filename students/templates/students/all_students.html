@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 {% extends "students/master.html" %}
+{% load static %}
 <html lang="en">
     
     {% block title %}
     Students Data
     {% endblock %}
-
-    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
 
 {% block content %}
     <p><a href="/">HOME</a></p>
-    <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">All Students</h1>
+    <h1>All Students</h1>
     <ul>
         {% for x in students %}
         <li style="list-style: none;"><a href="dashboard/{{x.id}}">{{ x.firstname }} {{ x.lastname }}</a></li>
         {% endfor %}
     </ul>
 
-    <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">In table format</h2>
-    <table border="2">
-        <tr style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+    <h2>In table format</h2>
+    <table border="1">
+        <tr>
             <th>Student ID</th>
             <th>First name</th>
             <th>Last name</th>

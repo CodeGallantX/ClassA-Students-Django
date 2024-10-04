@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import Student
+from django.db.models import Q
 
 def students(request):
   students = Student.objects.all().values()
@@ -23,5 +24,9 @@ def main(request):
   return HttpResponse(template.render())
 
 def testing(request):
+  data = Student.objects.all().order_by('lastname', '-id').values()
   template = loader.get_template('testing.html')
-  return HttpResponse(template.render())     
+  context = {
+    "data": data,
+  }
+  return HttpResponse(template.render(context, request))     

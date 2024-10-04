@@ -2,12 +2,13 @@
 <html lang="en">
 <body>
     
+    {% include 'menu.html' with me='Frill' sponsor="Crystal Heights" %}
     
-    {% if greeting == 1 %}
-    <h1>Hello</h1>
-    {% else %}
-    <h1>Goodbye</h1>
-    {% endif %}
+    <ol>
+        {% for x in data %}
+        <li>{{ x.firstname }} {{ x.lastname }} </li>
+        {% endfor %}
+    </ol>
 
     {% include 'footer.html' %}
    
