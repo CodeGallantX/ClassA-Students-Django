@@ -6,8 +6,13 @@
     
     
     {% block content %}
-    <h1>Hello Student!!</h1>
-    <p>You're welcome to Neon Institute</p>
-    <p> Click the button below to access your dashboard</p>
+    <div class="main">
+        <h1>Hello Student!!</h1>
+        <p>You're welcome to Neon Institute</p>
+        <br />
+        <p>Check out all our <a href="students/">students</a></p>
+      
+      </div>
     <a href="students/"><button>Go to students page</button></a>
+    <a href="/admin"><button>Login as admin</button></a>
     {% endblock %}

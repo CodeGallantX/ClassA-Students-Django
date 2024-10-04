@@ -6,12 +6,12 @@
 
 
     {% block content %}
-    <h1>Welcome {{student.lastname}} <strong>{{student.firstname}}</strong>!</h1>
-    <p>You have successfully enrolled into Neon Institute.</p>
-
-    <hr/>
-    <p><strong>Email address:</strong> {{ student.email }}</p>
-    <p><strong>Phone number:</strong> +{{ student.phone_number }}</p>
-    <p><strong>You joined ClassA on:</strong> {{ student.date_joined }}</p>
+    <p class="success-message">You have successfully enrolled into Neon Institute.</p>
+    <div class="mycard">
+        <h1>{{ student.firstname }} {{ student.lastname }}</h1>
+        <p>Email address: {{ student.email }}</p>
+        <p>Phone number: {{ student.phone_number }}</p>
+        <p>Member since: {{ student.date_joined }}</p>
+      </div>
     <p>Back to <a href="/students">Students list</a></p>
     {% endblock %}

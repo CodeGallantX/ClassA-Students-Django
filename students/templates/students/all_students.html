@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 {% extends "students/master.html" %}
-{% load static %}
 <html lang="en">
     
     {% block title %}
-    Students Data
+    Class-A Students List
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
 
 
 {% block content %}
-    <p><a href="/">HOME</a></p>
-    <h1>All Students</h1>
+<div class="mycard">
+    <h1>Students</h1>
     <ul>
-        {% for x in students %}
-        <li style="list-style: none;"><a href="dashboard/{{x.id}}">{{ x.firstname }} {{ x.lastname }}</a></li>
-        {% endfor %}
+      {% for x in students %}
+        <li onclick="window.location = 'dashboard/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}</li>
+      {% endfor %}
     </ul>
+  </div>
 
     <h2>In table format</h2>
     <table border="1">
