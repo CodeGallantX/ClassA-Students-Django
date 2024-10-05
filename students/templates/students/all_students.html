@@ -12,7 +12,8 @@
     <h1>Students</h1>
     <ul>
       {% for x in students %}
-        <li onclick="window.location = 'dashboard/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}</li>
+        <li onclick="window.location = 'dashboard/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}
+        </li>
       {% endfor %}
     </ul>
   </div>
