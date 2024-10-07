@@ -114,7 +114,7 @@ button {
   color: white;
   border: none;
   padding: 10px 14px;
-  border-radius: 6px;
+  border-radius: 10px;
   margin-left: 20px;
   font-family: Montserrat;
   cursor: pointer;
@@ -157,36 +157,36 @@ input[type="date"] {
   font-family: Cabin;
 }
 
-
-
-.alert-container {
+.alert-body {
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+  color: #343a40;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.alert {
-  background-color: #d4edda;
-  color: #155724;
-  border-color: #c3e6cb;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-  font-family: Cabin;
+.alert-container {
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
-.alert .icon {
-  font-size: 50px;
-  display: block; 
+.alert-heading {
+  font-size: 2rem;
   margin-bottom: 15px;
 }
 
-h1.alert-heading {
-  font-size: 2rem;
-  font-family: Montserrat;
+.alert a {
+  text-decoration: none;
 }
 
-.btn-primary {
-  margin-top: 10px;
+.alert a:hover {
+  text-decoration: underline;
+  color: #0056b3;
 }

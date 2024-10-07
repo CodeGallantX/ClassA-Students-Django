@@ -2,43 +2,19 @@
 {% extends "students/master.html" %}
 <html lang="en">
     
-    {% block title %}
-    Class-A Students List
-    {% endblock %}
-
+{% block title %}
+Class-A Students List
+{% endblock %}
 
 {% block content %}
 <div class="mycard">
     <h1>Students</h1>
     <ul>
       {% for x in students %}
-        <li onclick="window.location = 'dashboard/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}
-        </li>
+        <li onclick="window.location = 'dashboard/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}</li>
       {% endfor %}
     </ul>
-  </div>
+</div>
 
-    <!-- <h2>In table format</h2>
-    <table border="1">
-        <tr>
-            <th>Student ID</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Phone Number</th>
-            <th>Email Address</th>
-
-        </tr>
-        
-        {% for i in students %}
-        <tr>
-            <td>{{ i.id }}</td>
-            <td>{{ i.firstname }}</td>
-            <td>{{ i.lastname }}</td>
-            <td>{{ i.phone_number }}</td>
-            <td>{{ i.email }}</td>
-        </tr>
-        {% endfor %}
-    </table> -->
-    {% endblock %}
-
+{% endblock %}
 </html>
