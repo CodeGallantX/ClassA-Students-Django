@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "students/master.html" %}
+<html lang="en">
+    {% block title %}Student Information Form{% endblock %}
+
+    {% block content%}
+    <div class="container">
+        <h1>Student Information</h1>
+        <form action="../add_student/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="tel" id="phone_number" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="date_joined">Date Joined</label>
+                <input type="date" id="date_joined" name="date_joined" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+</html>
