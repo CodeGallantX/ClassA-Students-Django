@@ -3,33 +3,42 @@
 <html lang="en">
     {% block title %}Student Information Form{% endblock %}
 
-    {% block content%}
-    <div class="container">
-        <h1>Student Information</h1>
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Student Information</h1>
+
+        {% if success_icon %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <strong>Success!</strong> You have successfully enrolled the student.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
         <form action="../add_student/" method="POST">
             {% csrf_token %}
-            <div class="form-group">
+            <div class="mb-3 form-floating">
+                <input type="text" id="firstname" name="firstname" class="form-control" required>
                 <label for="firstname">First Name</label>
-                <input type="text" id="firstname" name="firstname" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3 form-floating">
+                <input type="text" id="lastname" name="lastname" class="form-control" required>
                 <label for="lastname">Last Name</label>
-                <input type="text" id="lastname" name="lastname" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3 form-floating">
+                <input type="tel" id="phone_number" name="phone_number" class="form-control" required>
                 <label for="phone_number">Phone Number</label>
-                <input type="tel" id="phone_number" name="phone_number" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3 form-floating">
+                <input type="email" id="email" name="email" class="form-control" required>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3 form-floating">
+                <input type="date" id="date_joined" name="date_joined" class="form-control" required>
                 <label for="date_joined">Date Joined</label>
-                <input type="date" id="date_joined" name="date_joined" required>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-{% endblock %}
+    {% endblock %}
 </html>

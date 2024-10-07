@@ -49,10 +49,17 @@ def add_student(request):
   return render(request, 'students/forms.html')
 
 
+# def remove_student(request, id):
+#   del_student = Student.objects.get(id=id)
+#   del_student.delete()
+#   template = loader.get_template('students/delete_student')
+#   return HttpResponse(success)
+
+
 def success(request):
   template = loader.get_template('success.html')
-  success_icon = "bi bi-check-circle-fill"
-  context = {
-    'success_icon': success_icon,
-  }
-  return HttpResponse(template.render(context, request))
+  # success_icon = "bi bi-check-circle-fill"
+  # context = {
+  #   'success_icon': success_icon,
+  # }
+  return HttpResponse(template.render())
