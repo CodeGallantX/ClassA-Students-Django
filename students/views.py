@@ -82,7 +82,11 @@ class AddStudentView(CreateView):
 def update(request):
   if request.method == 'POST':
     id = request.POST['id']
-    return redirect(update_student, id=id)
+    try:
+      student = Student.objects.get(id=id)
+      return redirect(update_student, id=id)
+    except Student.DoesNotExist:
+      return redirect(message, action_type='error')
   template = loader.get_template('students/update.html')
   return HttpResponse(template.render({}, request))
 
@@ -94,19 +98,21 @@ def update_student(request, id):
     student.phone_number = request.POST['phone_number']
     student.email = request.POST['email']
     student.save()
-    return redirect(success, action_type='update')
+    return redirect(message, action_type='update')
   template = loader.get_template('students/update_form.html')
   context = {
     'student': student,
   }
   return HttpResponse(template.render(context, request))
 
-def success(request, action_type):
+def message(request, action_type):
   template = loader.get_template('success.html')
   if action_type == 'add':
     message = "<strong>Success!</strong> You have successfully add a student."
   elif action_type == 'update':
     message = "<strong>Success!</strong> You have successfully updated the student."
+  elif action_type == 'error':
+    message = "<strong>&#x26A0; Oops</strong> No student with that ID exists."
   else:
     message = "<strong>Success!</strong> Operation completed successfully."
   context = {
