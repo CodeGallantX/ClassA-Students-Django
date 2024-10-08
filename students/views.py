@@ -109,13 +109,18 @@ def message(request, action_type):
   template = loader.get_template('success.html')
   if action_type == 'add':
     message = "<strong>Success!</strong> You have successfully add a student."
+    is_error = False
   elif action_type == 'update':
     message = "<strong>Success!</strong> You have successfully updated the student."
+    is_error = False
   elif action_type == 'error':
     message = "<strong>&#x26A0; Oops</strong> No student with that ID exists."
+    is_error = True
   else:
     message = "<strong>Success!</strong> Operation completed successfully."
+    is_error = False
   context = {
     "message": message,
+    "is_error": is_error,
   }
   return HttpResponse(template.render(context, request))

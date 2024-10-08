@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        {% if message.startswith('<strong>&#x26A0;') %}
+        {% if is_error %}
             <div class="alert alert-danger d-flex align-items-center" role="alert">
                 <div class="ms-3">
                     <h4 class="alert-heading">Error!</h4>
@@ -24,7 +24,7 @@
             </div>
         {% endif %}
         <hr>
-        <p class="mb-0">Return to the <a href="/students" class="btn btn-primary">Students List</a></p>
+        <p class="mb-0">Return to the <a href="/students" class="btn btn-primary">Students List</a> <a href="/students/update/" class="btn btn-primary">Back to Update</a></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
