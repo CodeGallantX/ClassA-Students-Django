@@ -105,23 +105,25 @@ def update(request):
 #   }
 #   return HttpResponse(template.render(context, request))
 
-def update_student(request, id):
-  student = Student.objects.get(id=id)
-  if request.method == 'POST':
-    form = AddStudentForm(request.POST)
-    try:
-      if form.is_valid():
-        form.save()
-        return redirect(message, action_type='update')
-    except:
-      return redirect(message, action_type='error')
-  template = loader.get_template('students/update_form.html')
-  context = {
-    'student': AddStudentForm(instance=student),
-    'id': id,   
-  }
-  return HttpResponse(template.render(context, request))
-      
+# def update_student(request, id):
+#   student = Student.objects.get(id=id)
+#   if request.method == 'POST':
+#     form = AddStudentForm(request.POST)
+#     try:
+#       if form.is_valid():
+#         form.save()
+#         return redirect(message, action_type='update')
+#     except:
+#       return redirect(message, action_type='error')
+#   template = loader.get_template('students/update_form.html')
+#   context = {
+#     'student': AddStudentForm(instance=student),
+#     'id': id,   
+#   }
+#   return HttpResponse(template.render(context, request))
+
+
+
 
 
 def message(request, action_type):
