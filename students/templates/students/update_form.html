@@ -1,0 +1,38 @@
+{% extends "students/master.html" %}
+{% block title %}Student Information Form{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Update Student Information</h1>
+
+    {% if success_icon %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill"></i>
+        <strong>Success!</strong> You have successfully updated the student.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'update_student' student.id %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3 form-floating">
+            <input type="text" id="firstname" name="firstname" class="form-control" value="{{ student.firstname }}" required>
+            <label for="firstname">First Name</label>
+        </div>
+        <div class="mb-3 form-floating">
+            <input type="text" id="lastname" name="lastname" class="form-control" value="{{ student.lastname }}" required>
+            <label for="lastname">Last Name</label>
+        </div>
+        <div class="mb-3 form-floating">
+            <input type="tel" id="phone_number" name="phone_number" class="form-control" value="{{ student.phone_number }}" required>
+            <label for="phone_number">Phone Number</label>
+        </div>
+        <div class="mb-3 form-floating">
+            <input type="email" id="email" name="email" class="form-control" value="{{ student.email }}" required>
+            <label for="email">Email</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" onclick="window.location = '/students/update/'" class="btn btn-primary">Back</button>
+    </form>
+</div>
+{% endblock %}

@@ -9,10 +9,9 @@
 <body>
     <div class="container mt-5">
         <div class="alert alert-success d-flex align-items-center" role="alert">
-            <i class="{{ success_icon }}"></i>
             <div class="ms-3">
-                <h4 class="alert-heading">Success!</h4>
-                <p>You have successfully enrolled in the course.</p>
+                <h4 class="alert-heading">Success &check;</h4>
+                <p>{{ message | safe }}</p>
                 <hr>
                 <p class="mb-0">Return to the <a href="/students" class="btn btn-primary">Students List</a></p>
             </div>

@@ -57,7 +57,7 @@ def add_student(request):
     form = AddStudentForm(request.POST)
     if form.is_valid():
       form.save()
-      return redirect(success)
+      return redirect(success, action_type='add')
     else:
       print(form.errors)
   context = {
@@ -79,11 +79,37 @@ class AddStudentView(CreateView):
 #   template = loader.get_template('students/delete_student')
 #   return HttpResponse(success)
 
+def update(request):
+  if request.method == 'POST':
+    id = request.POST['id']
+    return redirect(update_student, id=id)
+  template = loader.get_template('students/update.html')
+  return HttpResponse(template.render({}, request))
 
-def success(request):
+def update_student(request, id):
+  student = Student.objects.get(id=id)
+  if request.method == 'POST':
+    student.firstname = request.POST['firstname']
+    student.lastname = request.POST['lastname']
+    student.phone_number = request.POST['phone_number']
+    student.email = request.POST['email']
+    student.save()
+    return redirect(success, action_type='update')
+  template = loader.get_template('students/update_form.html')
+  context = {
+    'student': student,
+  }
+  return HttpResponse(template.render(context, request))
+
+def success(request, action_type):
   template = loader.get_template('success.html')
-  # success_icon = "bi bi-check-circle-fill"
-  # context = {
-  #   'success_icon': success_icon,
-  # }
-  return HttpResponse(template.render())
+  if action_type == 'add':
+    message = "<strong>Success!</strong> You have successfully add a student."
+  elif action_type == 'update':
+    message = "<strong>Success!</strong> You have successfully updated the student."
+  else:
+    message = "<strong>Success!</strong> Operation completed successfully."
+  context = {
+    "message": message,
+  }
+  return HttpResponse(template.render(context, request))

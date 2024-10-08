@@ -1,0 +1,25 @@
+{% extends "students/master.html" %}
+{% block title %}Student Information Form{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Update Student</h1>
+
+    {% if success_icon %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill"></i>
+        <strong>Success!</strong> You have successfully updated the student.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'update' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3 form-floating">
+            <input type="number" id="id" name="id" class="form-control" required>
+            <label for="id">Enter ID</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
