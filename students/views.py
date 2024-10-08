@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
 from .models import Student
+from .forms import AddStudentForm
+from django.views.generic import CreateView
 # from django.db.models import Q
 import datetime
 
@@ -36,17 +38,39 @@ def testing(request):
   return HttpResponse(template.render(context, request))     
 
 
+# def add_student(request):
+#   if request.method == 'POST':
+#     firstname = request.POST['firstname']
+#     lastname = request.POST['lastname']
+#     phone_number = request.POST['phone_number']
+#     email = request.POST['email']
+#     date_joined = request.POST['date_joined']
+#     student = Student(firstname = firstname, lastname = lastname, phone_number = phone_number, email = email, date_joined = date_joined)
+#     student.save()
+#     return redirect(success)
+#   return render(request, 'students/forms.html')
+
+
 def add_student(request):
+  template = loader.get_template('students/forms.html')
   if request.method == 'POST':
-    firstname = request.POST['firstname']
-    lastname = request.POST['lastname']
-    phone_number = request.POST['phone_number']
-    email = request.POST['email']
-    date_joined = request.POST['date_joined']
-    student = Student(firstname = firstname, lastname = lastname, phone_number = phone_number, email = email, date_joined = date_joined)
-    student.save()
-    return redirect(success)
-  return render(request, 'students/forms.html')
+    form = AddStudentForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect(success)
+    else:
+      print(form.errors)
+  context = {
+    "form" : AddStudentForm,
+  }
+  return HttpResponse(template.render(context, request))
+
+
+class AddStudentView(CreateView):
+  model = Student
+  fields = "__all__"
+  template_name = 'students/forms.html'
+  success_url = '../success'
 
 
 # def remove_student(request, id):
