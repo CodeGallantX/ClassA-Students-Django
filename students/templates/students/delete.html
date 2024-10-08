@@ -1,20 +1,25 @@
-<!DOCTYPE html>
 {% extends "students/master.html" %}
-<html lang="en">
-    {% block title %}Delete Student{% endblock %}
+{% block title %}Student Information Form{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h2 class="text-danger">Delete Student</h2>
-        <p>Are you sure you want to delete the student <strong>{{ student.firstname }} {{ student.lastname }}</strong>?</p>
+<div class="container mt-5">
+    <h1 class="mb-4">Update Student</h1>
 
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Delete</button>
-                <a href="{% url 'students' %}" class="btn btn-outline-primary">Cancel</a>
-            </div>
-        </form>
+    {% if success_icon %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill"></i>
+        <strong>Success!</strong> You have successfully updated the student.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endif %}
+
+    <form action="{% url 'delete' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3 form-floating">
+            <input type="number" id="id" name="id" class="form-control" required>
+            <label for="id">Enter ID</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 {% endblock %}
-</html>

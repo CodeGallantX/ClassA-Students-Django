@@ -85,6 +85,19 @@ def delete(request, id):
   template = loader.get_template('students/delete.html')
   return HttpResponse(template.render())
 
+def delete_student(request, id):
+  student = Student.objects.get(id=id)
+  if request.method == 'POST':
+    try:
+      student.delete()
+      student.save()
+      return redirect(message, action_type='delete')
+    except Student.DoesNotExist:
+      return redirect(message, action_type='error')
+  template = loader.get_template('students/delete.html')
+  return HttpResponse(template.render())
+
+
 def update(request):
   if request.method == 'POST':
     id = request.POST['id']
