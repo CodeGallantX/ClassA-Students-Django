@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "students/master.html" %}
+<html lang="en">
+    {% block title %}Delete Student{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-danger">Delete Student</h2>
+        <p>Are you sure you want to delete the student <strong>{{ student.firstname }} {{ student.lastname }}</strong>?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="{% url 'students' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+</html>

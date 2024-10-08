@@ -57,7 +57,7 @@ def add_student(request):
     form = AddStudentForm(request.POST)
     if form.is_valid():
       form.save()
-      return redirect(success, action_type='add')
+      return redirect(message, action_type='add')
     else:
       print(form.errors)
   context = {
@@ -73,11 +73,17 @@ class AddStudentView(CreateView):
   success_url = '../success'
 
 
-# def remove_student(request, id):
-#   del_student = Student.objects.get(id=id)
-#   del_student.delete()
-#   template = loader.get_template('students/delete_student')
-#   return HttpResponse(success)
+def delete(request, id):
+  student = Student.objects.get(id=id)
+  if request.method == 'POST':
+    try:
+      student.delete()
+      student.save()
+      return redirect(message, action_type='delete')
+    except Student.DoesNotExist:
+      return redirect(message, action_type='error')
+  template = loader.get_template('students/delete.html')
+  return HttpResponse(template.render())
 
 def update(request):
   if request.method == 'POST':
@@ -90,40 +96,20 @@ def update(request):
   template = loader.get_template('students/update.html')
   return HttpResponse(template.render({}, request))
 
-# def update_student(request, id):
-#   student = Student.objects.get(id=id)
-#   if request.method == 'POST':
-#     student.firstname = request.POST['firstname']
-#     student.lastname = request.POST['lastname']
-#     student.phone_number = request.POST['phone_number']
-#     student.email = request.POST['email']
-#     student.save()
-#     return redirect(message, action_type='update')
-#   template = loader.get_template('students/update_form.html')
-#   context = {
-#     'student': student,
-#   }
-#   return HttpResponse(template.render(context, request))
-
-# def update_student(request, id):
-#   student = Student.objects.get(id=id)
-#   if request.method == 'POST':
-#     form = AddStudentForm(request.POST)
-#     try:
-#       if form.is_valid():
-#         form.save()
-#         return redirect(message, action_type='update')
-#     except:
-#       return redirect(message, action_type='error')
-#   template = loader.get_template('students/update_form.html')
-#   context = {
-#     'student': AddStudentForm(instance=student),
-#     'id': id,   
-#   }
-#   return HttpResponse(template.render(context, request))
-
-
-
+def update_student(request, id):
+  student = Student.objects.get(id=id)
+  if request.method == 'POST':
+    student.firstname = request.POST['firstname']
+    student.lastname = request.POST['lastname']
+    student.phone_number = request.POST['phone_number']
+    student.email = request.POST['email']
+    student.save()
+    return redirect(message, action_type='update')
+  template = loader.get_template('students/update_form.html')
+  context = {
+    'student': student,
+  }
+  return HttpResponse(template.render(context, request))
 
 
 def message(request, action_type):
@@ -132,7 +118,10 @@ def message(request, action_type):
     message = "<strong>Success!</strong> You have successfully add a student."
     is_error = False
   elif action_type == 'update':
-    message = "<strong>Success!</strong> You have successfully updated the student."
+    message = "<strong>Success!</strong> You have successfully updated the student record."
+    is_error = False
+  elif action_type == 'update':
+    message = "<strong>Success!</strong> The student record has been successfully deleted."
     is_error = False
   elif action_type == 'error':
     message = "<strong>&#x26A0; Oops</strong> No student with that ID exists."
