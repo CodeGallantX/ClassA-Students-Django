@@ -73,17 +73,17 @@ class AddStudentView(CreateView):
   success_url = '../success'
 
 
-def delete(request, id):
-  student = Student.objects.get(id=id)
+def delete(request):
   if request.method == 'POST':
+    id = request.POST['id']
     try:
-      student.delete()
-      student.save()
-      return redirect(message, action_type='delete')
+      student = Student.objects.get(id=id)
+      return redirect(delete_student, id=id)
     except Student.DoesNotExist:
       return redirect(message, action_type='error')
   template = loader.get_template('students/delete.html')
-  return HttpResponse(template.render())
+  return HttpResponse(template.render({}, request))
+
 
 def delete_student(request, id):
   student = Student.objects.get(id=id)
@@ -94,7 +94,7 @@ def delete_student(request, id):
       return redirect(message, action_type='delete')
     except Student.DoesNotExist:
       return redirect(message, action_type='error')
-  template = loader.get_template('students/delete.html')
+  template = loader.get_template('students/delete_student.html')
   return HttpResponse(template.render())
 
 
