@@ -9,3 +9,11 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
+    
+
+class Profiles(models.Model):
+    username = models.CharField(max_length=20)
+    picture = models.ImageField(upload_to='pictures')
+    class Meta:
+        db_table = "profile"
+

@@ -147,3 +147,16 @@ def message(request, action_type):
     "is_error": is_error,
   }
   return HttpResponse(template.render(context, request))
+
+
+
+
+
+
+
+
+
+
+
+
+

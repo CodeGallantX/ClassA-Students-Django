@@ -12,3 +12,9 @@ class AddStudentForm(forms.ModelForm):
         #     self.fields['lastname'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
         #     self.fields['phone_number'].widget = forms.NumberInput(attrs={'readonly':'readonly'})
         #     self.fields['email'].widget = forms.EmailInput(attrs={'readonly':'readonly'})
+
+class ProfileForm(forms.Form):
+    firstname = forms.CharField(max_length=255)
+    lastname = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    picture = forms.ImageField()
